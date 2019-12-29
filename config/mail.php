@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,8 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    //    'from' => ['address' => 'tim@pixlquick.com', 'name' => 'Tim Dennis'],
+    'from' => ['address' => 'tim@pixlquick.com', 'name' => 'Tim Dennis'],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +109,4 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-
 ];
