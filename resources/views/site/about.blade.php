@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row bg-dark text-white">
+    <div class="banner-color">
 
         <div class="container p-3">
 
@@ -23,7 +23,7 @@
         <div class="row">
 
             <div class="col-md-6 col-sm-12 my-auto text-center">
-                <img src="{{ url('storage/images/about-me/'.$about->image) }}"
+                <img src="{{ url('storage/images/about-me/'.$aboutImage->image) }}"
                      class="shadow-lg"
                      width="70%"
                      alt="">
@@ -45,7 +45,7 @@
 
     </div>
 
-    <section class="p-5" style="background: #9baab9">
+    <section class="py-5 contact-color">
 
         <div class="container">
             <div class="row">

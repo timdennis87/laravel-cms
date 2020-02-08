@@ -23,11 +23,6 @@
                     <hr>
                     <hr>
 
-                    @include('admin.includes.class-type')
-
-                    <hr>
-                    <hr>
-
                     @include('admin.includes.classes')
 
                 </div>

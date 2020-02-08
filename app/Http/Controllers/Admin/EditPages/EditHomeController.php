@@ -27,7 +27,7 @@ class EditHomeController extends Controller
 
     public function getPageSections()
     {
-        return Maintenance::where('page_id', 2)->get();
+        return Maintenance::where('page_id', 2)->orderBy('display_order')->get();
     }
 
     public function uploadImage($request)
@@ -48,7 +48,6 @@ class EditHomeController extends Controller
 
     public function updateEditScreen(Request $request)
     {
-        dd($request->file('image'));
         $id    = $request->id;
         $image = $this->uploadImage($request);
 

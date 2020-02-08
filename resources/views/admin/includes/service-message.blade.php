@@ -65,18 +65,6 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="title">
-                                    Title
-                                </label>
-                                <input type="text"
-                                       class="form-control mb-3"
-                                       id="title"
-                                       name="title"
-                                       value="{{ $message->title }}">
-                            </div>
-                        </div>
 
                         <label>Message</label>
                         <textarea class="form-control mb-3"

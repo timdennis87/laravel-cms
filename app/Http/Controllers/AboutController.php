@@ -10,17 +10,24 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $pageName = Page::where('id', 3)->first();
-        $about    = $this->getAboutMeInformation();
+        $pageName   = Page::where('id', 3)->first();
+        $about      = $this->getAboutUsInformation();
+        $aboutImage = $this->getAboutUsImage();
 
         return view('site.about', [
-            'pageName' => $pageName,
-            'about'    => $about
+            'pageName'   => $pageName,
+            'about'      => $about,
+            'aboutImage' => $aboutImage
         ]);
     }
 
-    public function getAboutMeInformation()
+    public function getAboutUsInformation()
     {
-        return Maintenance::where('page_id', 3)->first();
+        return Maintenance::where('value', 'about_us')->first();
+    }
+
+    public function getAboutUsImage()
+    {
+        return Maintenance::where('value', 'about_us_image')->first();
     }
 }

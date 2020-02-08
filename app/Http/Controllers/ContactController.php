@@ -29,6 +29,7 @@ class ContactController extends Controller
     public function getMainContacts()
     {
         return Option::where('type', '1')
+            ->where('display', 1)
             ->orderBy('id', 'desc')
             ->get([
                 'name',

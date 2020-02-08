@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1df24fe3-3b2c-480c-a484-c6193405c4d4" name="test" url="http://pixlquick.com">
+        <fileTransfer host="pixlquick.com" port="21" rootFolder="/public_html/test-heritagehomeimprovements">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

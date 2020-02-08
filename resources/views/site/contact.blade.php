@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row bg-dark text-white">
+    <div class="banner-color">
 
         <div class="container p-3">
 
@@ -18,7 +18,7 @@
 
     </div>
 
-    <section class="p-5" style="background: #9baab9">
+    <section class="contact-color py-3">
 
         <div class="container">
 
@@ -32,13 +32,10 @@
                     <hr>
 
                     @foreach($mainContacts as $contact)
-                        <div class="row">
-                            <div class="col-5">
-                                {{ $contact->name }}:
-                            </div>
-                            <div class="col-7">
+                        <div class="">
+                            <div>
                                 <a target="_blank"
-                                   href="{{ $contact->class }}:">
+                                   href="{{ $contact->class }}:{{ $contact->description }}">
                                     {{ $contact->description }}
                                 </a>
                             </div>

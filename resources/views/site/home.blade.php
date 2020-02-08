@@ -8,21 +8,17 @@
 
     @endif
 
-    <div class="row bg-dark text-white">
+    <div style="background-image:url({{url('storage/images/home/'.$headerImage->image)}});"
+         class="header-image">
 
-        <div class="container p-5">
+        <div class="p-5">
 
             <div class="row">
+
                 <div class="mx-auto text-center">
 
-                    <h1>{{ $mainSection->name }}</h1>
-
-                    <p class="my-3 text-light">
-                        {{ $mainSection->description }}
-                    </p>
-
-                    <a href="/join?type={{ $mainSection->value }}&classType=&className="
-                       class="btn btn-primary text-white shadow px-5 my-3">
+                    <a href="/services"
+                       class="btn bg-dark text-white shadow px-5 my-auto">
                         {{ $mainSection->button }}
                     </a>
 
@@ -37,17 +33,11 @@
 
         <div class="row py-3">
 
-            <div class="col-md-6 col-sm-12">
-                <img src="{{ url('storage/images/home/'.$section2->image) }}"
-                     width="100%"
-                     alt="">
-            </div>
+            <div class="col mt-3">
 
-            <div class="col-md-6 col-sm-12 my-auto text-center">
+                <h4 class="text-center">{{ $section2->title }}</h4>
 
-                <h4>{{ $section2->title }}</h4>
-
-                <p>
+                <p class="text-center">
                     {!! $section2->body !!}
                 </p>
 
@@ -63,7 +53,7 @@
 
         <div class="row py-3">
 
-            <div class="col-md-6 col-sm-12 my-auto text-left">
+            <div class="col-md-6 col-sm-12 my-3 text-left">
 
                 <p>
                     {!! $section3->body !!}
@@ -71,8 +61,9 @@
 
             </div>
 
-            <div class="col-md-6 col-sm-12 text-center">
+            <div class="col-md-6 col-sm-12 text-center my-auto">
                 <img src="{{ url('storage/images/home/'.$section3->image) }}"
+                     class="shadow"
                      width="75%"
                      alt="">
             </div>
@@ -81,7 +72,7 @@
 
     </div>
 
-    @if( $freeLesson->display == 1 )
+    @if( $quotation->display == 1 )
 
         <hr>
 
@@ -91,11 +82,11 @@
 
                 <div class="my-auto mx-auto text-center">
 
-                    <h3>{{ $freeLesson->description }}</h3>
+                    <h3>{{ $quotation->description }}</h3>
 
-                    <a href="/join?type={{ $freeLesson->value }}&classType=no_type&className="
-                       class="btn btn-primary text-white shadow py-3 px-5 my-3">
-                        {{ $freeLesson->button }}
+                    <a href="/contact"
+                       class="btn btn-color shadow py-3 px-5 my-3">
+                        {{ $quotation->button }}
                     </a>
 
                 </div>
@@ -106,18 +97,20 @@
 
     @endif
 
-    <section class="p-5" style="background: #edfff8">
+    <hr>
+
+    <section class="p-5">
 
         <div class="container px-5">
 
             <div class="my-auto mx-auto text-center">
 
                 <p>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning fa-lg"></i>
-                    <i class="fas fa-star text-warning fa-2x"></i>
-                    <i class="fas fa-star text-warning fa-lg"></i>
-                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-gold"></i>
+                    <i class="fas fa-star text-gold fa-lg"></i>
+                    <i class="fas fa-star text-gold fa-2x"></i>
+                    <i class="fas fa-star text-gold fa-lg"></i>
+                    <i class="fas fa-star text-gold"></i>
                 </p>
 
                 @foreach($reviews as $review)
@@ -140,7 +133,7 @@
 
     </section>
 
-    <section class="p-5" style="background: #9baab9">
+    <section class="py-3 contact-color">
 
         <div class="container">
             <div class="row">

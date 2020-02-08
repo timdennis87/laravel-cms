@@ -16,18 +16,25 @@ class EditAboutController extends Controller
 
     public function viewEditScreen()
     {
-        $page  = Page::where('id', 3)->first();
-        $about = $this->getPageInformation();
+        $page       = Page::where('id', 3)->first();
+        $aboutInfo  = $this->getAboutInformation();
+        $aboutImage = $this->getAboutImage();
 
         return view('admin.pages.edit.edit-about', [
             'page'  => $page,
-            'about' => $about
+            'about' => $aboutInfo,
+            'image' => $aboutImage
         ]);
     }
 
-    public function getPageInformation()
+    public function getAboutInformation()
     {
-        return Maintenance::where('page_id', 3)->first();
+        return Maintenance::where('value', 'about_us')->first();
+    }
+
+    public function getAboutImage()
+    {
+        return Maintenance::where('value', 'about_us_image')->first();
     }
 
     public function uploadImage($request)
@@ -46,16 +53,26 @@ class EditAboutController extends Controller
         return $fileName;
     }
 
-    public function updateEditScreen(Request $request)
+    public function updateAboutInformation(Request $request)
     {
-        $image = $this->uploadImage($request);
-
-        $editPage = Maintenance::where('page_id', 3)->first();
+        $editPage = Maintenance::where('value', 'about_us')->first();
 
         $editPage->update([
             'title' => $request->title,
-            'image' => $image,
             'body'  => $request->body,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function updateAboutImage(Request $request)
+    {
+        $image = $this->uploadImage($request);
+
+        $editPage = Maintenance::where('value', 'about_us_image')->first();
+
+        $editPage->update([
+            'image' => $image,
         ]);
 
         return redirect()->back();

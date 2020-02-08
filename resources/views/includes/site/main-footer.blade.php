@@ -1,49 +1,40 @@
-<div class="navbar navbar-expand-lg bg-dark">
+
+<footer class="fixed-bottom">
+    <div class="bg-dark text-white px-5 d-block d-sm-none py-2">
+        <div class="">
+            <div class="row">
+                <div class="mx-auto">
+
+                    <form class="ml-auto">
+                        @foreach(\DB::table('options')->where('type', 1)->where('display', 1)->orderBy('id', 'desc')->get() as $contact)
+                            <a class="btn btn-color mr-2" target="_blank"
+                               href="{{ $contact->class }}:{{ $contact->description }}">
+                                {{ $contact->name }}
+                            </a>
+                        @endforeach
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<div class="footer-color py-3">
 
     <div class="container">
 
-        <div class="navbar-collapse" id="navbarSupportedContent">
-
-            <div class="d-none d-lg-block">
-
-                <p class="mb-0">
-                    &copy; {{ App\Option::where('value', 'site_name')->value('description') }} |
-                    PixlQuick Websites {{ date('Y') }}
-                </p>
-
-            </div>
-
-            <ul class="navbar-nav ml-auto">
-
-                @foreach(App\Page::where('display', 1)->orderBy('display_order', 'asc')->get() as $link)
-
-                    <p class="nav-item mb-0">
-                        <a class="nav-link text-light"
-                           href="{{ $link->url }}">
-                            {{ $link->name }}
-                        </a>
-                    </p>
-
-                @endforeach
-
-            </ul>
-
-            <div class="d-none d-lg-block">
-                <span class="mx-3">|</span>
-            </div>
-
-            @foreach(\DB::table('social_links')->where('display', 1)->orderBy('display_order', 'asc')->get() as $social)
-
-                <a style="color: {{ $social->color }};"
-                   href="{{ $social->url }}"
-                   target="_blank">
-                    {!! $social->icon !!}
-                </a>
-
-            @endforeach
-
+        <div class="row">
+            <p class="mb-0 mx-auto text-gold">
+                &copy; {{ App\Option::where('value', 'site_name')->value('description') }} |
+                PixlQuick Websites {{ date('Y') }}
+            </p>
         </div>
+
     </div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

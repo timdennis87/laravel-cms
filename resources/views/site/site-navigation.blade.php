@@ -1,49 +1,58 @@
 <style>
-.box {
-    border: 3px solid #4e555b;
-    padding: 10px 50px;
-}
+    .navbar-toggler {
+        position: absolute;
+        right: 40px;
+        top: 40px;
+    }
 </style>
 
-<div class="d-none d-lg-block">
+<div class="navbar navbar-expand-lg bg-dark text-white row px-5 d-none d-lg-block">
 
-    <div class="row mb-3">
+    <div class="navbar-collapse" id="navbarSupportedContent">
 
-        <div class="mx-auto box">
-            <a class="navbar-brand text-dark"
-               href="/">
-                <h1>{{ App\Option::where('value', 'site_name')->value('description') }}</h1>
+        Follow us :
+
+        @foreach(\DB::table('social_links')->where('display', 1)->orderBy('display_order', 'asc')->get() as $social)
+
+            <a style="color: {{ $social->color }};"
+               href="{{ $social->url }}"
+               target="_blank">
+                {!! $social->icon !!}
             </a>
-        </div>
+
+        @endforeach
+
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            @foreach(\DB::table('options')->where('type', 1)->where('display', 1)->orderBy('id', 'desc')->get() as $contact)
+                <a class="btn btn-color mr-2" target="_blank"
+                   href="{{ $contact->class }}:">
+                    {{ $contact->description }}
+                </a>
+            @endforeach
+        </form>
 
     </div>
-
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-0">
 
-    <div class="d-lg-none">
+    <div class="row">
+        <div class="col d-flex justify-content-center d-md-flex justify-content-md-start">
 
-        <a class="navbar-brand mr-0"
-           href="/">
-            {{ App\Option::where('value', 'site_name')->value('description') }}
-        </a>
+            <img src="{{ url('storage/images/logo/'.App\Option::where('value', 'website_logo')->value('description')) }}"
+                 width="20%"
+                 style="min-width: 150px !important; max-height: 150px;">
 
+        </div>
     </div>
 
-    <button class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav ml-auto">
 
             @foreach(App\Page::where('display', 1)->orderBy('display_order', 'asc')->get() as $link)
 
@@ -57,6 +66,32 @@
             @endforeach
 
         </ul>
+
+        <div class="d-lg-none d-md-block d-none">
+
+            <div class=" my-2 my-lg-0 ml-auto d-sm-block d-lg-none">
+                @foreach(\DB::table('options')->where('type', 1)->where('display', 1)->orderBy('id', 'desc')->get() as $contact)
+                    <a class="btn btn-color mr-2" target="_blank"
+                       href="{{ $contact->class }}:">
+                        {{ $contact->description }}
+                    </a>
+                @endforeach
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                @foreach(\DB::table('social_links')->where('display', 1)->orderBy('display_order', 'asc')->get() as $social)
+
+                    <a style="color: {{ $social->color }};"
+                       href="{{ $social->url }}"
+                       target="_blank">
+                        {!! $social->icon !!}
+                    </a>
+
+                @endforeach
+            </div>
+        </div>
 
     </div>
 </nav>

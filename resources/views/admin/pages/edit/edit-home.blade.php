@@ -170,7 +170,7 @@
             selector: '.body',
             menubar: false,
             height: 200,
-            toolbar: ['undo redo']
+            toolbar: ['undo redo | forecolor backcolor | alignleft aligncenter alignright alignjustify']
         });
     </script>
 

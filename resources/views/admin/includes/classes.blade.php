@@ -1,7 +1,7 @@
 <div class="row mb-3">
 
     <div class="col">
-        <h3>Classes</h3>
+        <h3>Services</h3>
     </div>
 
 </div>
@@ -9,9 +9,7 @@
 <table class="table table-sm">
     <thead>
     <tr>
-        <th>Class</th>
-        <th>Type</th>
-        <th>Price</th>
+        <th>Service</th>
         <th width="10%" class="text-center">Edit</th>
     </tr>
     </thead>
@@ -19,16 +17,8 @@
     <tbody>
     @foreach($classes as $class)
         <tr>
-            <td width="20%">
+            <td width="90%">
                 {{ $class->name }}
-            </td>
-
-            <td width="50%">
-                {{ $class->class_type }}
-            </td>
-
-            <td width="20%">
-                £{{ $class->price }}
             </td>
 
             <td width="10%"
@@ -74,7 +64,7 @@
 
                         <div class="form-group">
                             <label for="name">
-                                Class Name
+                                Service Name
                             </label>
                             <input type="text"
                                    class="form-control"
@@ -85,34 +75,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="type">Class Type</label>
-                            <select id="type" name="type" class="form-control">
-                                @foreach($classTypes as $type)
-                                    <option value="{{ $type->id }}"
-                                            {{ $class->type == $type->id ? 'selected' : ''}}
-                                    >
-                                        {{ $type->class_type }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="price">
-                                Class Price
-                            </label>
-                            £<input type="text"
-                                   class="form-control"
-                                   id="price"
-                                   name="price"
-                                   value="{{ $class->price }}"
-                                   placeholder="Price of class">
-                        </div>
-
-                        <div class="form-group">
                             <div class="form-group">
                                 <label for="description">
-                                    Class Description
+                                    Service Description
                                 </label>
                                 <textarea class="form-control description"
                                           id="description"
@@ -153,6 +118,6 @@
         selector: '.description',
         menubar: false,
         height: 200,
-        toolbar: ['undo redo']
+        toolbar: ['undo redo | forecolor backcolor | alignleft aligncenter alignright alignjustify']
     });
 </script>

@@ -45,6 +45,6 @@
                   rows="3"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-success px-5 shadow">Send Message</button>
+    <button type="submit" class="btn btn-color px-5 shadow">Send Message</button>
 
 </form>

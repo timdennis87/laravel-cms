@@ -8,11 +8,18 @@ Route::get('/', 'HomeScreenController@index');
 //Join
 Route::get('join', 'JoinController@index');
 
+//Gallery
+Route::get('gallery', 'GalleryController@index');
+Route::post('gallery', 'GalleryController@updateCategory');
+
 //Services
 Route::get('services', 'ServiceController@index');
 
-//Contact
-Route::get('about-me', 'AboutController@index');
+//About Me
+Route::get('about-us', 'AboutController@index');
+
+//Reviews
+Route::get('reviews', 'ReviewController@index');
 
 //Contact
 Route::get('contact', 'ContactController@index');
@@ -43,16 +50,22 @@ Route::get('admin/pages', 'Admin\NavigationController@viewPagesScreen');
 $editPages = 'Admin\EditPages';
 
 //About
-Route::get('admin/pages/about-me', $editPages.'\EditAboutController@viewEditScreen');
-Route::post('admin/pages/about-me/update', $editPages.'\EditAboutController@updateEditScreen');
+Route::get('admin/pages/about-us', $editPages.'\EditAboutController@viewEditScreen');
+Route::post('admin/pages/about-us/update-info', $editPages.'\EditAboutController@updateAboutInformation');
+Route::post('admin/pages/about-us/update-image', $editPages.'\EditAboutController@updateAboutImage');
 
 //Contact
 Route::get('admin/pages/contact', $editPages.'\EditContactController@viewContactEditScreen');
 Route::post('admin/pages/contact/update', $editPages.'\EditContactController@updateEditScreen');
 
-//Contact
+//Join
 Route::get('admin/pages/join', $editPages.'\EditJoinController@viewJoinEditScreen');
 Route::post('admin/pages/join/update', $editPages.'\EditJoinController@updateEditScreen');
+
+//Gallery
+Route::get('admin/pages/gallery', $editPages.'\EditGalleryController@viewGalleryEditScreen');
+Route::post('admin/pages/gallery/create', $editPages.'\EditGalleryController@addImage');
+Route::post('admin/pages/gallery/update/{id}', $editPages.'\EditGalleryController@updateImage');
 
 //Home
 Route::get('admin/pages/home', $editPages.'\EditHomeController@viewEditScreen');
@@ -71,7 +84,7 @@ Route::get('admin/social-links', 'Admin\NavigationController@viewSocialLinksScre
 Route::post('admin/social-links/update', 'Admin\NavigationController@editSocialLinks');
 
 //Reviews
-Route::get('admin/reviews', 'Admin\NavigationController@viewReviewScreen');
+Route::get('admin/pages/reviews', 'Admin\NavigationController@viewReviewScreen');
 Route::post('admin/reviews/update', 'Admin\NavigationController@editReviews');
 Route::post('admin/reviews/create', 'Admin\NavigationController@createReview');
 

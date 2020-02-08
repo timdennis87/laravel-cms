@@ -20,14 +20,12 @@ class EditServiceController extends Controller
     {
         $page        = Page::where('id', 6)->first();
         $message     = $this->getMessage();
-        $classTypes  = $this->getClassTypes();
         $classes     = $this->getClasses();
         $classLevels = $this->getClassLevels();
 
         return view('admin.pages.edit.edit-service', [
             'page'        => $page,
             'message'     => $message,
-            'classTypes'  => $classTypes,
             'classes'     => $classes,
             'classLevels' => $classLevels
         ]);
@@ -38,18 +36,12 @@ class EditServiceController extends Controller
         return Maintenance::where('page_id', 6)->first();
     }
 
-    public function getClassTypes()
-    {
-        return ClassType::orderBy('id')->get();
-    }
-
     public function getClasses()
     {
         return ClassBox::join('class_types', 'class_types.id', '=', 'class_boxes.type')
             ->orderBy('class_types.id')
             ->orderBy('class_boxes.price')
             ->get([
-                'class_types.class_type',
                 'class_boxes.id',
                 'class_boxes.name',
                 'class_boxes.description',
@@ -68,21 +60,7 @@ class EditServiceController extends Controller
         $message = Maintenance::where('page_id', 6);
 
         $message->update([
-            'title' => $request->title,
             'body'  => $request->body,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function editClassType(Request $request)
-    {
-        $id = $request->id;
-
-        $class_type = ClassType::where('id', $id);
-
-        $class_type->update([
-            'class_type' => $request->class_type,
         ]);
 
         return redirect()->back();
@@ -98,18 +76,6 @@ class EditServiceController extends Controller
             'name'        => $request->name,
             'description' => $request->description,
             'price'       => $request->price,
-            'type'        => $request->type,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function newClassType(Request $request)
-    {
-        $class_type = $request->class_type;
-
-        ClassType::create([
-            'class_type' => $class_type,
         ]);
 
         return redirect()->back();
@@ -121,7 +87,6 @@ class EditServiceController extends Controller
             'name'        => $request->name,
             'description' => $request->description,
             'price'       => $request->price,
-            'type'        => $request->type,
         ]);
 
         return redirect()->back();
